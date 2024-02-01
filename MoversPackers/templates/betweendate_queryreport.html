@@ -1,0 +1,49 @@
+{% extends 'admin_base.html' %}
+
+{% block main %} 
+
+<div class="card shadow m-2" >
+    <div class="card-body">
+        <h5 class="p-2 text-danger" style="border-bottom: 2px solid orange;">Between Date Query Reports</h5>
+    </div>
+    <div  class="container-fluid">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label for="fromdate">From Date</label>
+                        <input type="date" name="fromdate" class="form-control" required>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label for="todate">From Date</label>
+                        <input type="date" name="todate" class="form-control" required>
+                    </div>
+                </div>
+            </div>
+            <input type="submit" value="Submit" class="btn btn-primary m-3 px-3">
+            
+        </form>
+    </div>
+</div>
+
+{% if error == "no" %}
+<script>
+    alert('Service has been Added !!');
+    window.location = ('{% url 'manage_service' %}');
+</script>
+{% endif %}
+{% if error == "yes" %}
+<script>
+    alert('Something went wrong, Try again !!!');
+</script>
+{% endif %}
+{% if error == "not" %}
+<script>
+    alert('Your current password is wrong...');
+</script>
+{% endif %}
+
+{% endblock main %}

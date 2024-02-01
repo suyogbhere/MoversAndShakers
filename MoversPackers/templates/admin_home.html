@@ -1,0 +1,62 @@
+{% extends 'admin_base.html' %}
+
+{% block main %} 
+<div class="row">
+    <div class="col-sm-3 p-2">
+        <div class="card shadow">
+            <div class="card-body">
+                <h4 class="text-success"> Total Service</h4>
+                <h5>{{totalservices}}</h5>
+            </div>
+            <div class="card-footer">
+                <a href="{% url 'manage_service' %}" style="text-decoration: none;">View Details >></a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3 p-2">
+        <div class="card shadow">
+            <div class="card-body">
+                <h4 class="text-success"> Total Unread Queries</h4>
+                <h5>{{unreadqueries}}</h5>
+            </div>
+            <div class="card-footer">
+                <a href="{% url 'unread_queries' %}" style="text-decoration: none;">View Details >></a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3 p-2">
+        <div class="card shadow">
+            <div class="card-body">
+                <h4 class="text-success"> Total Read Queries</h4>
+                <h5>{{readqueries}}</h5>
+            </div>
+            <div class="card-footer">
+                <a href="{% url 'read_queries' %}" style="text-decoration: none;">View Details >></a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3 p-2">
+        <div class="card shadow">
+            <div class="card-body">
+                <h4 class="text-success"> Total New Booking</h4>
+                <h5>{{newbooking}}</h5>
+            </div>
+            <div class="card-footer">
+                <a href="{% url 'new_booking' %}" style="text-decoration: none;">View Details >></a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3 p-2">
+        <div class="card shadow">
+            <div class="card-body">
+                <h4 class="text-success"> Total Old Booking</h4>
+                <h5>{{oldbooking}}</h5>
+            </div>
+            <div class="card-footer">
+                <a href="{% url 'old_booking' %}" style="text-decoration: none;">View Details >></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock main %}

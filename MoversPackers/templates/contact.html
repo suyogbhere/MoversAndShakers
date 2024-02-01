@@ -1,0 +1,93 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block content1 %}
+<body class="row" id="contact">
+    <section>
+        <div class="container py-5">
+            <div class="card bg-secondary bg-opacity-50">
+                <div class="card-body">
+                    <h1 class="font-weight-light py-3 text-center">Contact Us</h1>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-12 col-sm-12">
+                            <div class="row pt-3">
+                                <div class="col-lg-1 offset-1 col-md-2 col-sm-2">
+                                    <span style="font-size: 30px; color: darkblue;"><i class="fas fa-map-marker-alt"></i></span>
+                                </div>
+                                <div class="col-lg-10  col-md-9 col-sm-9 text-white">
+                                    <h3 class="fw-light">Find us at the office</h3>
+                                    <p>304, Sweet Home <br>
+                                        sector 16, Ghansoli <br>
+                                        Navi Mumbai, 400701
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row pt-3">
+                                <div class="col-lg-1 offset-1 col-md-2 col-sm-2 ">
+                                    <span style="font-size: 30px; color: orangered;"><i class="fas fa-phone"></i></span>
+                                </div>
+                                <div class="col-lg-10  col-md-9 col-sm-9 text-white">
+                                    <h3 class="fw-light">Give us Ring</h3>
+                                     <p>Suyog Bhere <br>
+                                        +91 7738484680 <br>
+                                        Navi Mumbai
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-12 col-sm-12">
+                            <form action="" method="POST">
+                                {% csrf_token %}
+                                <div class="row">
+                                    <div class="form-group col-lg-6 col-md-12">
+                                        <label for="name">Full Name</label>
+                                        <input type="text" name="name" class="form-control" placeholder="full name">
+                                    </div>
+                                    <div class="form-group col-lg-6 col-md-12">
+                                        <label for="contact">Contact</label>
+                                        <input type="text" name="contact" class="form-control" placeholder="contact">
+                                    </div>
+                                    <div class="form-group col-lg-6 col-md-12">
+                                        <label for="emailid">Email ID</label>
+                                        <input type="email" name="emailid" class="form-control" placeholder="contact">
+                                    </div>
+                                    <div class="form-group col-lg-6 col-md-12">
+                                        <label for="subject">Subject</label>
+                                        <input type="text"  name="subject" class="form-control" placeholder="subject">
+                                    </div>
+                                    <div class="form-group col-lg-12 col-md-12">
+                                        <label for="message">Message</label>
+                                         <textarea  name="message" rows="2" class="form-control" placeholder="message..."></textarea>
+                                    </div>
+                                    <div class="form-group col-lg-6 col-md-12 mt-3">
+                                        <input type="submit" value="Send" class="form-control btn btn-primary">
+                                    </div>
+                                    <div class="form-group col-lg-6 col-md-12 mt-3">
+                                        <input type="reset"  value="Clear" class="form-control btn btn-primary">
+                                    </div>
+                                </div>
+                                
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    {% if error == "no" %}
+    <script>
+        alert('Your message has been send. We will contact you soon !!');
+        window.location = ('{% url 'contact' %}');
+    </script>
+    {% endif %}
+    {% if error == "yes" %}
+    <script>
+        alert('Something went wrong, Try again !!!');
+    </script>
+    {% endif %}
+</body>
+
+{% endblock content1 %}

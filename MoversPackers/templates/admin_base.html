@@ -1,0 +1,128 @@
+{% load static %}
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Movers & Packers</title>
+        <link rel="stylesheet" href="{% static 'css/fontawesome.css' %}">
+        <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+        <link rel="stylesheet" href="{% static 'css/sidebar.css' %}">
+        <link rel="stylesheet" href="{% static 'css/datatablebootstrap.css' %}">
+    </head>
+    <body>
+        
+        <!-- Vertical navbar start -->
+        <div class="bg-white vertical-nav" id="sidebar">
+            <div class="bg-light py-4 mb-1">
+                <p class="text-uppercase fw-bold px-3 sidebar-title">Movers and packers</p>
+
+                <div class="media d-flex align-items-center">
+                    <img src="{% static 'images/adminlogin.png' %}" alt="" srcset="" height="80" width="80" class=" me-3 rounded-circle img-thumbnail shadow-sm">
+                    <div class="media-body">
+                        <h4 class="mb-0">Admin</h4>
+                        <p class="text-muted mb-0">{{request.user.email}}</p>
+                    </div>
+                </div>
+            </div>
+            <ul class="nav flex-column bg-white">
+                <li class="nav-item">
+                    <a href="{%  url 'admin_home' %}" class="nav-link ac text-dark bg-light">
+                       <i class="fa fa-tachometer fa-fw me-3 text-primary"></i> Dashboard
+                    </a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a href="{%  url 'admin_home' %}" class="nav-link dropdown-toggle text-dark bg-light" id="navbardrop" data-bs-toggle="dropdown" aria-expanded="false">
+                       <i class="fas fa-chart-bar fa-fw me-3 text-primary"></i> Services
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="{% url 'add_service' %}">Add Services</a>
+                        <a class="dropdown-item" href="{% url 'manage_service' %}">Manage Services</a>
+                   </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="{%  url 'admin_home' %}" class="nav-link dropdown-toggle text-dark bg-light" id="navbardrop" data-bs-toggle="dropdown" aria-expanded="false">
+                       <i class=" me-3 text-primary"></i>Booking
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="{% url 'new_booking' %}">New Booking</a>
+                        <a class="dropdown-item" href="{% url 'old_booking' %}">Old Booking</a>
+                   </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a href="{%  url 'admin_home' %}" class="nav-link dropdown-toggle text-dark bg-light" id="navbardrop" data-bs-toggle="dropdown" aria-expanded="false">
+                       <i class="fa fa-question-circle me-3 text-primary"></i>Queries
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="{%  url 'unread_queries' %}">Unread Queries</a>
+                        <a class="dropdown-item" href="{%  url 'read_queries' %}">Read Queries</a>
+                   </div>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{%  url 'search' %}" class="nav-link text-dark bg-light">
+                       <i class="fa fa-search  fa-fw me-3 text-primary"></i> Search
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="{%  url 'admin_home' %}" class="nav-link dropdown-toggle text-dark bg-light" id="navbardrop" data-bs-toggle="dropdown" aria-expanded="false">
+                       <i class="fa fa-question-circle me-3 text-primary"></i>Reports
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="{%  url 'betweendate_bookingreport' %}">Bookinng b/w Dates</a>
+                        <a class="dropdown-item" href="{%  url 'betweendate_queryreport' %}">Queries b/w dates</a>
+                   </div>
+                </li>
+                <li class="nav-item">
+                    <a href="{%  url 'change_password' %}" class="nav-link text-dark bg-light">
+                       <i class="fa fa-key  fa-fw me-3 text-primary"></i> Change password
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'logout' %}" class="nav-link text-dark bg-light">
+                       <i class="fa fa-sign-out  fa-fw me-3 text-primary"></i> Logout
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Vertical navbar end -->
+
+
+        <!-- content placeholder start -->
+        <div class="page-content p-4" id="content">
+            <a href="{% url 'logout' %}" title="logout" class="text-white float-end">Logout
+                <i class="fa fa-sign-out"></i>
+            </a>
+
+            <button id="sidebarcollapse" type="button" class="btn btn-light bg-white rounded-pill shadow-sm mb-4">
+                <i class="fa fa-bars me-2"></i>
+               <small class="text-uppercase fw-bold">toggle</small> 
+            </button>
+
+            {% block main %}
+
+            {% endblock main %}
+        </div>
+
+
+        <!-- content placeholder end -->
+
+
+
+            <!-- Bootstrap -->
+        <script src="{% static 'js/fontawesome.js' %}"></script>
+        <script src="{% static 'js/jquery.js' %}"></script>
+        <script src="{% static 'js/popper.js' %}"></script>
+        <script src="{% static 'js/bootstrap.js' %}"></script>
+        <script src="{% static 'js/sidebar.js' %}"></script>
+             <!-- Datatable -->
+        <script src="{% static 'js/pdf_vfs.js' %}"></script>
+        <script src="{% static 'js/pdfmake.js' %}"></script>
+        <script src="{% static 'js/print.js' %}"></script>
+        <script src="{% static 'js/DatatableScript.js' %}"></script>
+    </body>
+</html>

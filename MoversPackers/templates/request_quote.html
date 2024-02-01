@@ -1,0 +1,105 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block content1 %}
+
+
+<header class="container-fluid" style="border : 1px solid yellow">
+    <img src="{% static 'images/img1.jpg' %}" width="80%" class="img-responsive">
+</header>
+
+
+<nav aria-label="breadcrumb" class="bg-light p-1">
+    <ol class="breadcrumb p-1">
+        <li class="breadcrumb-item ms-3"><a href="{% url 'index' %}">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">services</li>
+    </ol>
+</nav>
+
+<div class="container ">
+    <div class="card shadow m-3">
+        <div class="card-body">
+            <h5 class="p-2 text-danger" style="border-bottom: 2px solid orange;">Request Quote</h5>
+        </div>
+        <div  class="container-fluid">
+            <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" name="name" class="form-control" placeholder="Enter your name">
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type name="email" class="form-control" placeholder="email">
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="contact">Contact Number</label>
+                            <input type="text" name="contact" class="form-control" placeholder="Contact Number">
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="location">Where do you want movers and packers service?</label>
+                            <input type="text" name="location" class="form-control" placeholder="Where do you want movers and packers service?">
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="shiftingloc">Where are you shifting?</label>
+                            <input type="text" name="shiftingloc" class="form-control" placeholder="Where are you shifting?">
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="shiftingdate">Date of shifting?</label>
+                            <input type="date" name="shiftingdate" class="form-control" placeholder="Date of shifting?">
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="briefitems">What do want to you shifting?</label>
+                            <select type="text" name="briefitems" class="form-control">
+                                <option value="">Select</option>
+                                <option value="Very Few Items">Very Few Items</option>
+                                <option value="1 BHK">1 BHK</option>
+                                <option value="2 BHK">2 BHK</option>
+                                <option value="3 BHK">3 BHK</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="items">Please mention all the items that you are willing to shift?</label>
+                            <textarea name="items" rows="2" class="form-control"></textarea>
+                        </div>
+                    </div>
+
+                </div>
+                <input type="submit" value="Submit" class="btn btn-primary m-3 px-3">
+                
+            </form>
+        </div>
+    </div>
+    
+    {% if error == "no" %}
+    <script>
+        alert('Your request have been send. We will contact you soon !!');
+        window.location = ('{% url 'request_quote' %}');
+    </script>
+    {% endif %}
+    {% if error == "yes" %}
+    <script>
+        alert('Something went wrong, Try again !!!');
+    </script>
+    {% endif %}
+
+</div>
+
+
+{% endblock content1 %}

@@ -1,0 +1,40 @@
+{% extends 'admin_base.html' %}
+
+{% block main %} 
+
+<div class="card shadow m-2" >
+    <div class="card-body">
+        <h5 class="p-2 text-danger" style="border-bottom: 2px solid orange;">Old Booking</h5>
+    </div>
+    <div  class="container-fluid table-responsive">
+       <table class="table table-bordered"  id="example">
+        <thead>
+            <tr>
+                <th>Sr. No</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Contact Number</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for b in booking %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{b.name}}</td>
+                <td>{{b.email}}</td>
+                <td>{{b.mobile}} </td>
+                <td>
+                    <a href="{% url 'view_bookingdetail' b.id %}"   style="width: 70px; text-decoration: none;">View Details</a> |
+                    &nbsp
+                    <a href="{% url 'delete_booking' b.id %}" class="text-danger"  style="width: 70px; text-decoration: none;"  onclick="return confirm('Are you Sure want to delete?')">Delete Details</a>
+                </td>
+            </tr> 
+            {% endfor %}
+        </tbody>
+       </table>
+    </div>
+</div>
+
+
+{% endblock main %}

@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Movers And Packers</a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link {% if request.path == '/' %} active {% endif %}"  href="/"><i class="fa fa-home"></i> Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if request.path == '/show_services/' %} active {% endif %}"  href="{% url 'show_services' %}"><i class="fa fa-wrench"></i>Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if request.path == '/about/' %} active {% endif %}"  href="{% url 'about' %}"><i class="fa fa-info"></i>About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if request.path == '/request_quote/' %} active {% endif %}"  href="{% url 'request_quote' %}"><i class="fa fa-plus-square"></i>Request Quote</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if request.path == '/contact/' %} active {% endif %}"  href="{% url 'contact' %}"><i class="fa fa-address-book"></i>Contact</a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link {% if request.path == '//' %} active {% endif %}"  href=""><i class="fa fa-sign-in"></i>Employee Signup</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if request.path == '//' %} active {% endif %}"  href=""><i class="fa fa-sign-in"></i>Employee Login</a>
+          </li>    -->
+          <li class="nav-item">
+            <a class="nav-link {% if request.path == '/admin_login/' %} active {% endif %}"  href="{% url 'admin_login' %}"><i class="fa fa-sign-in"></i>Admin Login</a>
+          </li>  
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+

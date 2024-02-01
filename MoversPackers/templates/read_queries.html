@@ -1,0 +1,58 @@
+{% extends 'admin_base.html' %}
+
+{% block main %} 
+<div class="card shadow m-2" >
+    <div class="card-body">
+        <h5 class="p-2 text-danger" style="border-bottom: 2px solid orange;">Read Queries</h5>
+    </div>
+    <div  class="container-fluid table-responsive">
+       <table class="table table-bordered"  id="example">
+        <thead>
+            <tr>
+                <th>Sr. No</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Contact</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody> 
+            {% for c in contact %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{c.name}}</td>
+                <td>{{c.emailid}} </td>
+                <td>{{c.contact}}</td>
+                <td>
+                    <a href="{% url 'view_queries' c.id %}" style="text-decoration: none;">View Details</a>|
+                    <a href="{% url 'view_queries' c.id %}" style="text-decoration: none; color: red;" onclick="return confirm('Are you sure want to delete!!')">Delete Details</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+       </table>
+    </div>
+</div>
+
+
+{% if error == "no" %}
+<script>
+    alert('Service has been Added !!');
+    window.location = ('{% url 'manage_service' %}');
+</script>
+{% endif %}
+{% if error == "yes" %}
+<script>
+    alert('Something went wrong, Try again !!!');
+</script>
+{% endif %}
+{% if error == "not" %}
+<script>
+    alert('Your current password is wrong...');
+</script>
+{% endif %}
+
+{% endblock main %}
+
+<!-- <a href="{% url 'edit_service' s.id %}" class="btn btn-warning" style="width: 70px;">Edit</a>
+                    <a href="{% url 'delete_service' s.id %}" class="btn btn-danger" onclick="return confirm('Are you Sure want to delete?')" >Delete</a> -->

@@ -1,0 +1,41 @@
+{% extends 'admin_base.html' %}
+
+{% block main %} 
+
+<div class="card shadow m-2" >
+    <div class="card-body">
+        <h5 class="p-2 text-danger" style="border-bottom: 2px solid orange;">Manage Services</h5>
+    </div>
+    <div  class="container-fluid table-responsive">
+       <table class="table table-bordered"  id="example">
+        <thead>
+            <tr>
+                <th>Sr. No</th>
+                <th>ServiceImage</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>CreationDate</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for s in services %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td><img src=" {{s.image.url}}" height="50px"></td>
+                <td>{{s.title}}</td>
+                <td>{{s.discription}} </td>
+                <td>{{s.creationdate}}</td>
+                <td>
+                    <a href="{% url 'edit_service' s.id %}" class="btn btn-warning" style="width: 70px;">Edit</a>
+                    <a href="{% url 'delete_service' s.id %}" class="btn btn-danger" onclick="return confirm('Are you Sure want to delete?')" >Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+       </table>
+    </div>
+</div>
+
+
+{% endblock main %}
